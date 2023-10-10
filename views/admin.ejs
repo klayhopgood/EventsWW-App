@@ -1,0 +1,56 @@
+<h1>Admin Portal</h1>
+
+<h2>Upload a File:</h2>
+<form action="/admin/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+</form>
+
+<h2>Select Files to Distribute:</h2>
+<form id="distributeForm">
+    <% files.forEach(function(file) { %>
+        <li>
+            <input type="checkbox" name="selectedFiles" value="<%= file %>">
+            <label><%= file %></label>
+        </li>
+    <% }); %>
+</form>
+
+<h3>Distribute to Users by Name:</h3>
+<form action="/admin/distributeByUser" method="POST" onsubmit="appendFilesToForm('distributeByUserForm')">
+    <div id="distributeByUserForm">
+        <% users.forEach(function(user) { %>
+            <input type="checkbox" name="userNames" value="<%= user.firstname %> <%= user.lastname %>">
+            <label><%= user.firstname %> <%= user.lastname %></label><br>
+        <% }); %>
+    </div>
+    <button type="submit">Distribute by Name</button>
+</form>
+
+<h3>Distribute to Users by Tour:</h3>
+<form action="/admin/distributeByTour" method="POST" onsubmit="appendFilesToForm('distributeByTourForm')">
+    <div id="distributeByTourForm">
+        <% tours.forEach(function(tour) { %>
+            <input type="checkbox" name="tour" value="<%= tour %>">
+            <label><%= tour %></label><br>
+        <% }); %>
+    </div>
+    <button type="submit">Distribute by Tour</button>
+</form>
+
+<% if (typeof success !== 'undefined' && success) { %>
+    <script>
+        alert("Files distributed successfully!");
+    </script>
+<% } %>
+
+<script>
+    function appendFilesToForm(formId) {
+        const form = document.getElementById(formId);
+        const selectedFiles = document.querySelectorAll('#distributeForm input[name="selectedFiles"]:checked');
+        selectedFiles.forEach(input => {
+            const clonedInput = input.cloneNode();
+            form.appendChild(clonedInput);
+        });
+    }
+</script>

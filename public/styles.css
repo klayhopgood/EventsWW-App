@@ -1,0 +1,30 @@
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    background: linear-gradient(45deg, #D76D77, #FFAF7B); /* Diagonal gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styles for form and its elements */
+form {
+    display: flex;
+    flex-direction: column;  /* Stack the fields on top of each other */
+    gap: 10px;  /* Space between each field */
+}
+
+button {
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
+}

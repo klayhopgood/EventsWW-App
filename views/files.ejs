@@ -1,0 +1,15 @@
+<head>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<div class="container">
+<h1>Your Files</h1>
+
+<ul>
+    <% files.forEach(function(file) { %>
+        <li><a href="/download/<%= file.name %>"><%= file.name %></a></li>
+    <% }); %>
+</ul>
+
+<li><a href="/dashboard"><button>Back to Dashboard</button></a></li>
+
+</div>

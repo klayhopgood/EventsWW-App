@@ -1,0 +1,13 @@
+<head>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<div class="container">
+<h1>EWW APP</h1>
+
+<% if (!currentUser) { %>
+    <li><a href="/register"><button>Sign Up</button></a></li>
+    <li><a href="/login"><button>Login</button></a></li>
+<% } else { %>
+    <li><a href="/dashboard"><button>View Dashboard</button></a></li>
+<% } %>
+</div>
